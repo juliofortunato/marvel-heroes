@@ -1,10 +1,17 @@
-import { Button } from "./_components/ui/button";
+import Header from "./_components/header";
 
 export default function Home() {
   return (
     <>
-      <h1 className="font-black text-2xl">Hello world</h1>
-      <Button variant="outline">teste</Button>
+      <Header />
+      <div className="px-7">
+        <div>
+          <h2 className="text-sm font-semibold text-gray-400">
+            Bem vindo ao Marvel Heroes
+          </h2>
+          <h1 className="text-4xl font-black">Escolha o seu personagem</h1>
+        </div>
+      </div>
     </>
   );
 }
