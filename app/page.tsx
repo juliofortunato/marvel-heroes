@@ -1,3 +1,4 @@
+import CharacterList from "./_components/character-list";
 import Header from "./_components/header";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
             Bem vindo ao Marvel Heroes
           </h2>
           <h1 className="text-4xl font-black">Escolha o seu personagem</h1>
+          <CharacterList />
         </div>
       </div>
     </>

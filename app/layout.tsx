@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import ReactQueryClientProvider from "./_providers/react-query-client-provider";
 import "./globals.css";
 
 const gilroy = localFont({
@@ -45,7 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${gilroy.className} antialiased`}>{children}</body>
+      <body className={`${gilroy.className} antialiased`}>
+        <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
+      </body>
     </html>
   );
 }
