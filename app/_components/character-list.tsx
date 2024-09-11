@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useCharacters } from "../_services/character";
+import CharacterCard from "./character-card";
 import { Button } from "./ui/button";
 
 const CharacterList = () => {
@@ -34,28 +33,15 @@ const CharacterList = () => {
     return <div className="container mx-auto p-4">Error: {error.message}</div>;
 
   return (
-    <div>
-      {characters?.map((character) => (
-        <Link
-          href={`/character/${character.id}`}
-          key={character.id}
-          className="block"
-        >
-          <div className="rounded-lg border p-4 transition-shadow hover:shadow-lg">
-            <h2 className="text-xl font-semibold">{character.name}</h2>
-            <Image
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-              className="mt-2 h-48 w-full rounded object-cover"
-              width={300}
-              height={300}
-            />
-          </div>
-        </Link>
-      ))}
+    <>
+      <div className="grid grid-cols-3 items-center justify-center gap-2">
+        {characters?.map((character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </div>
       <Button onClick={handleChangePage("prev")}>Previous</Button>
       <Button onClick={handleChangePage("next")}>Next</Button>
-    </div>
+    </>
   );
 };
 
