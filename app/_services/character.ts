@@ -23,7 +23,7 @@ const fetchCharacterById = (characterId: string) =>
   });
 
 export const useCharacter = (characterId: string) => {
-  return useQuery<Character, Error>({
+  return useQuery<Character[], Error>({
     queryKey: ["character", characterId],
     queryFn: () => fetchCharacterById(characterId),
   });
