@@ -49,7 +49,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${gilroy.className} antialiased`}>
         <ReactQueryClientProvider>
-          <div className="flex h-full flex-col">
+          <div className="flex h-screen flex-col">
             <div className="flex-1">{children}</div>
             <Footer />
           </div>

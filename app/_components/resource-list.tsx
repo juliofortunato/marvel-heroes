@@ -13,7 +13,7 @@ const ResourceList = ({ list }: ResourceListProps) => {
   return (
     <ul className="space-y-1">
       {list.items.map((item, idx) => (
-        <li className="text-white" key={idx}>
+        <li className="text-white md:text-lg" key={idx}>
           {item.name}
         </li>
       ))}

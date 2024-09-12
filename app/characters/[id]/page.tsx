@@ -44,7 +44,7 @@ const CharacterPage = ({ params: { id } }: CharacterPageProps) => {
           className="object-cover"
         />
       </div>
-      <div className="relative -mt-12 space-y-4 rounded-t-3xl bg-gray-950 p-7">
+      <div className="relative -mt-12 space-y-4 rounded-t-3xl bg-gray-950 p-7 md:mx-auto md:max-w-[70%] md:space-y-8">
         <h1 className="text-5xl font-black text-white">{character?.name}</h1>
 
         <CharacterStats

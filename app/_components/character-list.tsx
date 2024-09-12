@@ -67,7 +67,7 @@ const CharacterList = () => {
 
   if (isLoading)
     return (
-      <div className="flex w-full items-center justify-center pt-20">
+      <div className="flex w-full items-center justify-center pb-20 pt-20">
         <LoaderCircleIcon size={48} className="animate-spin text-gray-900" />
       </div>
     );
@@ -79,13 +79,13 @@ const CharacterList = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 items-center justify-center gap-2">
+      <div className="grid grid-cols-3 items-center justify-center gap-2 md:grid-cols-4">
         {data?.results?.map((character) => (
           <CharacterCard key={character.id} character={character} />
         ))}
       </div>
 
-      <Pagination>
+      <Pagination className="pb-6 pt-6">
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
