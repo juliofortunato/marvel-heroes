@@ -68,6 +68,7 @@ const CharacterPagination = ({ totalPages }: CharacterPaginationProps) => {
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
+            className="cursor-pointer aria-disabled:cursor-not-allowed"
             onClick={handleChangePage(currentPage - 1)}
             aria-disabled={currentPage === 1}
             tabIndex={currentPage === 1 ? -1 : 0}
@@ -79,6 +80,7 @@ const CharacterPagination = ({ totalPages }: CharacterPaginationProps) => {
               <PaginationEllipsis />
             ) : (
               <PaginationLink
+                className="cursor-pointer aria-disabled:cursor-not-allowed"
                 onClick={handleChangePage(pageNumber as number)}
                 isActive={pageNumber === currentPage}
                 aria-current={pageNumber === currentPage ? "page" : undefined}
@@ -90,6 +92,7 @@ const CharacterPagination = ({ totalPages }: CharacterPaginationProps) => {
         ))}
         <PaginationItem>
           <PaginationNext
+            className="cursor-pointer aria-disabled:pointer-events-none"
             onClick={handleChangePage(currentPage + 1)}
             aria-disabled={currentPage === totalPages}
             tabIndex={currentPage === totalPages ? -1 : 0}
