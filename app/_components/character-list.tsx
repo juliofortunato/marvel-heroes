@@ -31,7 +31,7 @@ const CharacterList = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 items-center justify-center gap-2 md:grid-cols-4">
+      <div className="grid grid-cols-3 items-center justify-center gap-2 md:grid-cols-4 md:gap-4">
         {data?.results?.map((character) => (
           <CharacterCard key={character.id} character={character} />
         ))}

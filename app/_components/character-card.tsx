@@ -11,9 +11,9 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
     <Link
       href={`/characters/${character.id}`}
       key={character.id}
-      className="block"
+      className="group block"
     >
-      <div className="relative h-[230px] w-full overflow-hidden rounded-2xl shadow-lg">
+      <div className="relative h-[230px] w-full overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-in-out group-hover:z-20 group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-lg">
         <Image
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}

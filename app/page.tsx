@@ -5,9 +5,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="space-y-4 px-7">
+      <main className="space-y-4 px-7 md:space-y-8">
         <div>
-          <h2 className="text-sm font-semibold text-gray-400">
+          <h2 className="text-sm font-semibold text-gray-400 md:text-lg">
             Bem vindo ao Marvel Heroes
           </h2>
           <h1 className="text-4xl font-black">Escolha o seu personagem</h1>
