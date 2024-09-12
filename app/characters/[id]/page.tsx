@@ -1,13 +1,13 @@
 "use client";
 
-import CharacterSection from "@/app/_components/character-section";
-import CharacterStats from "@/app/_components/character-stats";
-import ResourceList from "@/app/_components/resource-list";
 import { Accordion } from "@/app/_components/ui/accordion";
 import { useCharacter } from "@/app/_services/character";
+import CharacterSection from "@/app/characters/[id]/_components/character-section";
 import { LoaderCircleIcon } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import CharacterStats from "./_components/character-stats";
+import ResourceList from "./_components/resource-list";
 
 interface CharacterPageProps {
   params: {
