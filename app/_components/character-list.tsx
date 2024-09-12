@@ -1,12 +1,12 @@
 "use client";
 
-import { LoaderCircleIcon } from "lucide-react";
 import { useMemo } from "react";
 import useFilters from "../_hooks/useFilters";
 import usePagination from "../_hooks/usePagination";
 import { useCharacters } from "../_services/character";
 import CharacterCard from "./character-card";
 import CharacterPagination from "./character-pagination";
+import Loading from "./loading";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -19,12 +19,7 @@ const CharacterList = () => {
     [data?.total],
   );
 
-  if (isLoading)
-    return (
-      <div className="flex w-full items-center justify-center pb-20 pt-20">
-        <LoaderCircleIcon size={48} className="animate-spin text-gray-900" />
-      </div>
-    );
+  if (isLoading) return <Loading />;
 
   if (error)
     return <div className="container mx-auto p-4">Error: {error.message}</div>;

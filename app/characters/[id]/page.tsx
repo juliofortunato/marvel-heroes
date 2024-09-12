@@ -1,9 +1,9 @@
 "use client";
 
+import Loading from "@/app/_components/loading";
 import { Accordion } from "@/app/_components/ui/accordion";
 import { useCharacter } from "@/app/_services/character";
 import CharacterSection from "@/app/characters/[id]/_components/character-section";
-import { LoaderCircleIcon } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import CharacterStats from "./_components/character-stats";
@@ -25,12 +25,7 @@ const CharacterPage = ({ params: { id } }: CharacterPageProps) => {
 
   if (!id) return notFound();
 
-  if (isLoading)
-    return (
-      <div className="flex min-h-screen w-full items-center justify-center">
-        <LoaderCircleIcon size={48} className="animate-spin text-white" />
-      </div>
-    );
+  if (isLoading) return <Loading variant="light" fullHeight />;
 
   if (error) return <p>Error: {error.message}</p>;
 
