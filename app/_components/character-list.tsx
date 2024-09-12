@@ -1,7 +1,8 @@
 "use client";
 
 import { LoaderCircleIcon } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import usePagination from "../_hooks/usePagination";
 import { useCharacters } from "../_services/character";
 import CharacterCard from "./character-card";
 import {
@@ -17,7 +18,7 @@ import {
 const ITEMS_PER_PAGE = 20;
 
 const CharacterList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const { page: currentPage, changePage } = usePagination();
   const { data: characters, isLoading, error } = useCharacters(currentPage - 1);
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(characters?.length || 0 / ITEMS_PER_PAGE)),
@@ -62,12 +63,6 @@ const CharacterList = () => {
     return pageNumbers;
   };
 
-  const handleChangePage = (page: number) => () => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
-
   if (isLoading)
     return (
       <div className="flex w-full items-center justify-center pt-20">
@@ -92,7 +87,7 @@ const CharacterList = () => {
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              onClick={handleChangePage(currentPage - 1)}
+              onClick={() => changePage(currentPage - 1)}
               aria-disabled={currentPage === 1}
               tabIndex={currentPage === 1 ? -1 : 0}
             />
@@ -103,7 +98,7 @@ const CharacterList = () => {
                 <PaginationEllipsis />
               ) : (
                 <PaginationLink
-                  onClick={handleChangePage(pageNumber as number)}
+                  onClick={() => changePage(pageNumber as number)}
                   isActive={pageNumber === currentPage}
                   aria-current={pageNumber === currentPage ? "page" : undefined}
                 >
@@ -114,7 +109,7 @@ const CharacterList = () => {
           ))}
           <PaginationItem>
             <PaginationNext
-              onClick={handleChangePage(currentPage + 1)}
+              onClick={() => changePage(currentPage + 1)}
               aria-disabled={currentPage === totalPages}
               tabIndex={currentPage === totalPages ? -1 : 0}
             />

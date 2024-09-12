@@ -35,7 +35,7 @@ const CharacterPage = ({ params: { id } }: CharacterPageProps) => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <>
+    <main>
       <div className="relative h-[495px] w-full">
         <Image
           src={`${character?.thumbnail.path}.${character?.thumbnail.extension}`}
@@ -89,7 +89,7 @@ const CharacterPage = ({ params: { id } }: CharacterPageProps) => {
           )}
         </Accordion>
       </div>
-    </>
+    </main>
   );
 };
 
