@@ -8,7 +8,10 @@ export default function usePagination() {
   const page = Number(searchParams.get("page")) || 1;
 
   const changePage = (page: number) => {
-    router.replace(`/?page=${page}`);
+    if (page < 1) return;
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("page", String(page));
+    router.replace(`?${searchParams.toString()}`);
   };
 
   return { page, changePage };

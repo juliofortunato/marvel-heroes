@@ -17,7 +17,7 @@ interface CharacterPageProps {
 
 const CharacterPage = ({ params: { id } }: CharacterPageProps) => {
   const { data, isLoading, error } = useCharacter(id);
-  const character = data?.[0];
+  const character = data?.results?.[0];
   const totalComics = character?.comics.available || 0;
   const totalEvents = character?.events.available || 0;
   const totalSeries = character?.series.available || 0;

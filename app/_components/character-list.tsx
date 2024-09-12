@@ -2,6 +2,7 @@
 
 import { LoaderCircleIcon } from "lucide-react";
 import { useMemo } from "react";
+import useFilters from "../_hooks/useFilters";
 import usePagination from "../_hooks/usePagination";
 import { useCharacters } from "../_services/character";
 import CharacterCard from "./character-card";
@@ -18,11 +19,12 @@ import {
 const ITEMS_PER_PAGE = 20;
 
 const CharacterList = () => {
+  const { search } = useFilters();
   const { page: currentPage, changePage } = usePagination();
-  const { data: characters, isLoading, error } = useCharacters(currentPage - 1);
+  const { data, isLoading, error } = useCharacters(currentPage - 1, search);
   const totalPages = useMemo(
-    () => Math.max(1, Math.ceil(characters?.length || 0 / ITEMS_PER_PAGE)),
-    [characters],
+    () => Math.max(1, Math.ceil((data?.total || 0) / ITEMS_PER_PAGE)),
+    [data?.total],
   );
 
   const generatePageNumbers = () => {
@@ -78,7 +80,7 @@ const CharacterList = () => {
   return (
     <>
       <div className="grid grid-cols-3 items-center justify-center gap-2">
-        {characters?.map((character) => (
+        {data?.results?.map((character) => (
           <CharacterCard key={character.id} character={character} />
         ))}
       </div>

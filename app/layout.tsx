@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Footer from "./_components/footer";
 import ReactQueryClientProvider from "./_providers/react-query-client-provider";
 import "./globals.css";
 
@@ -47,7 +48,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${gilroy.className} antialiased`}>
-        <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
+        <ReactQueryClientProvider>
+          <div className="flex h-full flex-col">
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
+        </ReactQueryClientProvider>
       </body>
     </html>
   );

@@ -4,8 +4,9 @@ const Footer = () => {
   return (
     <footer>
       <Card className="rounded-none">
-        <CardContent className="px-5 py-6 text-xs">
-          Data provided by Marvel. © {new Date().getFullYear()} Marvel
+        <CardContent className="space-y-1 px-5 py-6 text-xs">
+          <p>Data provided by Marvel. © {new Date().getFullYear()} Marvel</p>
+          <p>Coded with ❤️ by Júlio Fortunato</p>
         </CardContent>
       </Card>
     </footer>
