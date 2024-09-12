@@ -6,6 +6,7 @@ import usePagination from "../_hooks/usePagination";
 import { useCharacters } from "../_services/character";
 import CharacterCard from "./character-card";
 import CharacterPagination from "./character-pagination";
+import Error from "./error";
 import Loading from "./loading";
 
 const ITEMS_PER_PAGE = 20;
@@ -21,8 +22,7 @@ const CharacterList = () => {
 
   if (isLoading) return <Loading />;
 
-  if (error)
-    return <div className="container mx-auto p-4">Error: {error.message}</div>;
+  if (error) return <Error message={error.message} />;
 
   return (
     <>

@@ -1,5 +1,6 @@
 "use client";
 
+import Error from "@/app/_components/error";
 import Loading from "@/app/_components/loading";
 import { Accordion } from "@/app/_components/ui/accordion";
 import { useCharacter } from "@/app/_services/character";
@@ -27,7 +28,7 @@ const CharacterPage = ({ params: { id } }: CharacterPageProps) => {
 
   if (isLoading) return <Loading variant="light" fullHeight />;
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <Error message={error.message} />;
 
   return (
     <main>
