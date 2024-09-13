@@ -20,6 +20,10 @@ Some of the techs used in this project:
 - Jest
 - Playwright
 
+## 🌎 Live Demo
+
+A published version can be found at https://marvel-heroes-kohl.vercel.app/
+
 ## ⚙️ Setup
 
 First of all, you'll need to install the project's dependencies by running
@@ -28,7 +32,7 @@ First of all, you'll need to install the project's dependencies by running
 npm install
 ```
 
-Rename the `.env.example` file to `.env` and fill in both public and private keys for the API of [Marvel Developer Portal](https://developer.marvel.com/).
+Rename the `.env.example` file to `.env.local` and fill in both public and private keys for the API of [Marvel Developer Portal](https://developer.marvel.com/).
 
 Then you can start the application using
 
