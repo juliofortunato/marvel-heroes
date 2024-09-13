@@ -21,7 +21,10 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
           fill
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"
+          data-testid="gradient-overlay"
+        />
 
         <div className="absolute bottom-0 left-0 p-2">
           <h2 className="text-lg font-bold text-white">{character.name}</h2>
