@@ -39,7 +39,11 @@ const Stats = () => {
   if (error) return <Error message={error.message} />;
 
   return (
-    <ChartContainer config={{}} className="bg-red h-full w-full py-8 pb-10">
+    <ChartContainer
+      config={{}}
+      className="bg-red h-full w-full py-8 pb-10"
+      data-testid="stats-chart"
+    >
       <BarChart
         data={formattedData}
         layout="vertical"
