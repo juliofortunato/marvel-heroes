@@ -5,10 +5,10 @@ test("Check character details", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "A-Bomb (HAS) A-Bomb (HAS)" }),
   ).toBeVisible();
-  await expect(page.getByLabel("Go to next page")).toBeVisible();
-  await page.getByLabel("Go to next page").click();
-  await expect(page.getByLabel("Go to previous page")).toBeVisible();
-  await page.getByLabel("Go to previous page").click();
+  await expect(page.getByLabel("Ir para a próxima página")).toBeVisible();
+  await page.getByLabel("Ir para a próxima página").click();
+  await expect(page.getByLabel("Ir para a página anterior")).toBeVisible();
+  await page.getByLabel("Ir para a página anterior").click();
   await expect(
     page.getByRole("link", { name: "A-Bomb (HAS) A-Bomb (HAS)" }),
   ).toBeVisible();

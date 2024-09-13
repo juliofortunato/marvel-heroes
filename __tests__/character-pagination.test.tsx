@@ -28,7 +28,7 @@ describe("CharacterPagination", () => {
 
   it("disables previous button on first page", () => {
     render(<CharacterPagination totalPages={5} />);
-    const prevButton = screen.getByLabelText("Go to previous page");
+    const prevButton = screen.getByLabelText("Ir para a página anterior");
     expect(prevButton).toHaveAttribute("aria-disabled", "true");
   });
 
@@ -38,7 +38,7 @@ describe("CharacterPagination", () => {
       navigateTo: mockNavigateTo,
     });
     render(<CharacterPagination totalPages={5} />);
-    const nextButton = screen.getByLabelText("Go to next page");
+    const nextButton = screen.getByLabelText("Ir para a próxima página");
     expect(nextButton).toHaveAttribute("aria-disabled", "true");
   });
 
@@ -54,7 +54,7 @@ describe("CharacterPagination", () => {
       navigateTo: mockNavigateTo,
     });
     render(<CharacterPagination totalPages={10} />);
-    expect(screen.getAllByText("More pages")).toHaveLength(2);
+    expect(screen.getAllByText("Mais páginas")).toHaveLength(2);
   });
 
   it("correctly generates page numbers for middle pages", () => {
@@ -76,7 +76,7 @@ describe("CharacterPagination", () => {
       navigateTo: mockNavigateTo,
     });
     render(<CharacterPagination totalPages={5} />);
-    fireEvent.click(screen.getByLabelText("Go to next page"));
+    fireEvent.click(screen.getByLabelText("Ir para a próxima página"));
     expect(mockNavigateTo).toHaveBeenCalledWith(4);
   });
 
@@ -86,7 +86,7 @@ describe("CharacterPagination", () => {
       navigateTo: mockNavigateTo,
     });
     render(<CharacterPagination totalPages={5} />);
-    fireEvent.click(screen.getByLabelText("Go to previous page"));
+    fireEvent.click(screen.getByLabelText("Ir para a página anterior"));
     expect(mockNavigateTo).toHaveBeenCalledWith(2);
   });
 });
