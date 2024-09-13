@@ -1,7 +1,7 @@
-import { ComicList } from "../_types/comics";
-import { EventList } from "../_types/events";
-import { SeriesList } from "../_types/series";
-import { StoryList } from "../_types/stories";
+import { ComicList } from "../../../_types/comics";
+import { EventList } from "../../../_types/events";
+import { SeriesList } from "../../../_types/series";
+import { StoryList } from "../../../_types/stories";
 
 interface ResourceListProps {
   list: ComicList | EventList | SeriesList | StoryList | undefined;
