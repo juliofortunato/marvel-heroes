@@ -13,7 +13,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
       key={character.id}
       className="group block"
     >
-      <div className="relative h-[230px] w-full overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-in-out group-hover:z-20 group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-lg">
+      <div className="relative h-[230px] w-full overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-in-out group-hover:z-20 group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-lg lg:h-[400px]">
         <Image
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
