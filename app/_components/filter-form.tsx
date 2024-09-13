@@ -1,8 +1,12 @@
 "use client";
 
+import { PopoverClose } from "@radix-ui/react-popover";
 import { ChevronsUpDownIcon } from "lucide-react";
-import { FormEvent, useState } from "react";
-import useFilters from "../_hooks/useFilters";
+import { ChangeEvent, FormEvent, useState } from "react";
+import useFilters, {
+  ORDER_BY_OPTIONS,
+  OrderByOption,
+} from "../_hooks/useFilters";
 import { Button } from "./ui/button";
 import { Command, CommandItem, CommandList } from "./ui/command";
 import { Input } from "./ui/input";
@@ -10,24 +14,20 @@ import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { SheetClose } from "./ui/sheet";
 
-const SORT_BY_OPTIONS = {
-  name: "Nome crescente",
-  "-name": "Nome decrescente",
-  modified: "Data de modificação mais recente",
-  "-modified": "Data de modificação mais antiga",
-};
-
-type SortByOption = keyof typeof SORT_BY_OPTIONS;
-
 const FilterForm = () => {
-  const { searchCharacter } = useFilters();
-  const [sortBy, setSortBy] = useState<SortByOption | undefined>();
+  const { searchCharacter, search, changeOrder, orderBy } = useFilters();
+  const [currentSearch, setCurrentSearch] = useState<string>(search);
+  const [selectedOrderBy, setSelectedOrderBy] =
+    useState<OrderByOption>(orderBy);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const searchValue = formData.get("search") as string;
-    searchCharacter(searchValue);
+    searchCharacter(currentSearch);
+    changeOrder(selectedOrderBy);
+  };
+
+  const handleChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setCurrentSearch(e.target.value);
   };
 
   return (
@@ -40,10 +40,12 @@ const FilterForm = () => {
           Nome
         </Label>
         <Input
-          type="text"
           id="name"
           name="search"
+          onChange={handleChangeSearch}
           placeholder="Nome do personagem"
+          type="search"
+          value={currentSearch}
         />
       </div>
 
@@ -54,23 +56,29 @@ const FilterForm = () => {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline" role="combobox">
-              {sortBy ? SORT_BY_OPTIONS[sortBy] : "Selecionar..."}
+              {selectedOrderBy
+                ? ORDER_BY_OPTIONS[selectedOrderBy]
+                : "Selecionar..."}
               <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="p-0">
             <Command>
-              <CommandList>
-                {Object.entries(SORT_BY_OPTIONS).map(([value, label]) => (
-                  <CommandItem
-                    key={value}
-                    onSelect={() => setSortBy(value as SortByOption)}
-                    value={value}
-                  >
-                    {label}
-                  </CommandItem>
-                ))}
-              </CommandList>
+              <PopoverClose>
+                <CommandList>
+                  {Object.entries(ORDER_BY_OPTIONS).map(([value, label]) => (
+                    <CommandItem
+                      key={value}
+                      onSelect={(value) =>
+                        setSelectedOrderBy(value as OrderByOption)
+                      }
+                      value={value}
+                    >
+                      {label}
+                    </CommandItem>
+                  ))}
+                </CommandList>
+              </PopoverClose>
             </Command>
           </PopoverContent>
         </Popover>

@@ -1,19 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
+import { OrderByOption } from "../_hooks/useFilters";
 import { Character } from "../_types/character";
 import { marvelAPI } from "./marvel-api";
 
-const fetchCharacters = (page: number, search: string) =>
+const fetchCharacters = (
+  page: number,
+  search: string,
+  orderBy: OrderByOption,
+) =>
   marvelAPI({
     method: "get",
     endpoint: "/characters",
     page,
     search,
+    orderBy,
   });
 
-export const useCharacters = (page: number, search: string) => {
+export const useCharacters = (
+  page: number,
+  search: string,
+  orderBy: OrderByOption,
+) => {
   return useQuery<{ results: Character[]; total: number }, Error>({
-    queryKey: ["characters", page, search],
-    queryFn: () => fetchCharacters(page, search),
+    queryKey: ["characters", page, search, orderBy],
+    queryFn: () => fetchCharacters(page, search, orderBy),
   });
 };
 

@@ -12,9 +12,13 @@ import Loading from "./loading";
 const ITEMS_PER_PAGE = 20;
 
 const CharacterList = () => {
-  const { search } = useFilters();
+  const { search, orderBy } = useFilters();
   const { currentPage } = usePagination();
-  const { data, isLoading, error } = useCharacters(currentPage - 1, search);
+  const { data, isLoading, error } = useCharacters(
+    currentPage - 1,
+    search,
+    orderBy,
+  );
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil((data?.total || 0) / ITEMS_PER_PAGE)),
     [data?.total],
