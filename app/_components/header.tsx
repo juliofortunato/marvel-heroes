@@ -1,10 +1,14 @@
+"use client";
+
 import { ChartNoAxesCombinedIcon, SearchIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import FilterForm from "./filter-form";
+import Stats from "./stats";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -12,7 +16,7 @@ import {
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between bg-white px-7 py-5 text-gray-900">
+    <header className="sticky top-0 z-50 flex items-center justify-between bg-white px-7 py-5 text-gray-900">
       <div className="order-1 md:order-2">
         <Sheet>
           <SheetTrigger className="flex items-center gap-2 hover:underline">
@@ -21,11 +25,14 @@ const Header = () => {
               Estatísticas
             </span>
           </SheetTrigger>
-          <SheetContent side="left">
+          <SheetContent className="md:min-w-[70%]">
             <SheetHeader>
               <SheetTitle>Estatísticas</SheetTitle>
+              <SheetDescription>
+                Relação de quadrinhos por personagem da página atual
+              </SheetDescription>
             </SheetHeader>
-            <div className="space-y-4">Aqui vão os gráficos</div>
+            <Stats />
           </SheetContent>
         </Sheet>
       </div>
@@ -45,6 +52,9 @@ const Header = () => {
           <SheetContent>
             <SheetHeader>
               <SheetTitle>Pesquisar</SheetTitle>
+              <SheetDescription>
+                Filtros para refinar a busca por personagens
+              </SheetDescription>
             </SheetHeader>
             <div className="space-y-4">
               <FilterForm />
