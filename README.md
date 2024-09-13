@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦸 Marvel Heroes
 
-## Getting Started
+![](https://images.unsplash.com/photo-1618519764620-7403abdbdfe9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
-First, run the development server:
+_This is a simple app built using Next.js and TailwindCSS to be used as Kanastra's technical test. It works as a simulation so the user can check info about Marvel's characters._
+
+## ℹ Requirements
+
+- NodeJS (used v20.13.1 on development)
+- NPM / Yarn
+
+## 🤓 Technologies
+
+Some of the techs used in this project:
+
+- Next.js
+- React Query
+- TailwindCSS
+- Recharts
+- Jest
+- Playwright
+
+## ⚙️ Setup
+
+First of all, you'll need to install the project's dependencies by running
+
+```bash
+npm install
+```
+
+Rename the `.env.example` file to `.env` and fill in both public and private keys for the API of [Marvel Developer Portal](https://developer.marvel.com/).
+
+Then you can start the application using
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+After that you'll be up and running at http://localhost:3000 _(or the next available port)_
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚨 Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Test suites can be run using the following commands:
 
-## Learn More
+### Unit Tests
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+or
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run test:watch
+```
 
-## Deploy on Vercel
+### E2E Tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npx playwright test
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Build
+
+A production build can be generated with
+
+```bash
+npm run build
+```
