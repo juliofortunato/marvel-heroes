@@ -1,16 +1,14 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import CharacterPagination from "../app/_components/character-pagination";
+import CharacterPagination from "../_components/character-pagination";
 
-jest.mock("../app/_hooks/usePagination", () => ({
+jest.mock("../_hooks/usePagination", () => ({
   __esModule: true,
   default: jest.fn(),
 }));
 
 describe("CharacterPagination", () => {
-  const mockUsePagination = jest.requireMock(
-    "../app/_hooks/usePagination",
-  ).default;
+  const mockUsePagination = jest.requireMock("../_hooks/usePagination").default;
   const mockNavigateTo = jest.fn();
 
   beforeEach(() => {

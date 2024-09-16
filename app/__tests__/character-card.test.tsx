@@ -2,7 +2,7 @@ import { Character } from "@/app/_types/character";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import CharacterCard from "../app/_components/character-card";
+import CharacterCard from "../_components/character-card";
 
 // Mock next/image
 jest.mock("next/image", () => ({
